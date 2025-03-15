@@ -2,6 +2,13 @@ Here is the extracted text from your PDF:
 
 
 ---
+text-navbar -#FFFFFF
+backgoun- #121212
+font-size: 16px
+letter-spacing: 0.15%
+font- open sans
+npm 
+
 
 Home | Gallery | Contact
 
