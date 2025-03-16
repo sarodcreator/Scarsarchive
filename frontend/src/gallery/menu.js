@@ -27,17 +27,17 @@ export default menu;
 import React from 'react';
 import './index.css';
 
-const Menu = ({ setCategory }) => {
+const Menu = ({ setCategory }) => { // Accept setCategory as a prop
   return (
     <div className="galleryMenu">
-        <h2><span>Projects</span></h2>
-        <p>Explore my portfolio featuring stunning photography, dynamic videography, and beautifully crafted albums.</p>
-        <div className="divider"></div>
-        <ul>
-            <li onClick={() => setCategory('wedding')} className="menu">Wedding</li>
-            <li onClick={() => setCategory('birthday')} className="menu">Birthdays</li>
-            <li onClick={() => setCategory('travel')} className="menu">Travels</li>
-        </ul>
+      <h2><span>Projects</span></h2>
+      <p>Explore my portfolio featuring stunning photography, dynamic videography, and beautifully crafted albums.</p>
+      <div className="divider"></div>
+      <ul>
+        <li onClick={() => setCategory('wedding')} className="menu">Wedding</li>
+        <li onClick={() => setCategory('birthday')} className="menu">Birthdays</li>
+        <li onClick={() => setCategory('travel')} className="menu">Travels</li>
+      </ul>
     </div>
   );
 };
