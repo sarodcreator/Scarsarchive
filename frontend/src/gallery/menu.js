@@ -24,19 +24,41 @@ const menu = () => {
 export default menu;
 */
 
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
 
-const Menu = ({ setCategory }) => { // Accept setCategory as a prop
+const Menu = ({ setCategory }) => {
+  const [activeCategory, setActiveCategory] = useState('wedding'); // Default active category
+
+  const handleCategoryClick = (category) => {
+    setCategory(category);
+    setActiveCategory(category); // Update active category
+  };
+
   return (
     <div className="galleryMenu">
       <h2><span>Projects</span></h2>
       <p>Explore my portfolio featuring stunning photography, dynamic videography, and beautifully crafted albums.</p>
       <div className="divider"></div>
       <ul>
-        <li onClick={() => setCategory('wedding')} className="menu">Wedding</li>
-        <li onClick={() => setCategory('birthday')} className="menu">Birthdays</li>
-        <li onClick={() => setCategory('travel')} className="menu">Travels</li>
+        <li 
+          onClick={() => handleCategoryClick('wedding')} 
+          className={`menu ${activeCategory === 'wedding' ? 'active' : ''}`}
+        >
+          Wedding
+        </li>
+        <li 
+          onClick={() => handleCategoryClick('birthday')} 
+          className={`menu ${activeCategory === 'birthday' ? 'active' : ''}`}
+        >
+          Birthdays
+        </li>
+        <li 
+          onClick={() => handleCategoryClick('travel')} 
+          className={`menu ${activeCategory === 'travel' ? 'active' : ''}`}
+        >
+          Travels
+        </li>
       </ul>
     </div>
   );
