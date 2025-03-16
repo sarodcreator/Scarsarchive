@@ -39,7 +39,12 @@
     text-align: left;
     width: 100%;
     font: var(--body-medium);
-    cursor: pointer
+    cursor: pointer;
+    transition: color 0.3s ease, margin-left 0.3s ease;
+}
+.menu.active {
+  color: black;
+  margin-left: 16px;
 }
 .divider{
     border-bottom: 4px solid var(--body-color);
