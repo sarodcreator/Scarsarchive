@@ -38,7 +38,8 @@
     color: var(--body-color);
     text-align: left;
     width: 100%;
-    font: var(--body-medium)
+    font: var(--body-medium);
+    cursor: pointer
 }
 .divider{
     border-bottom: 4px solid var(--body-color);
@@ -46,13 +47,8 @@
     margin-top: 16px;
     height: 1px;
 }
-.galleryMenu ul .menu:active {
-    margin-left: 16px;
-    margin-top: 80px;
-    transition: ease 0.2s;
-    font: var(--body-large);
-    color: var(--black);
-}
+
+
 /*testimonial section */
 /*testimonial section */
 .testimonials-section {
