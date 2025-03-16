@@ -37,26 +37,18 @@ import Testimonial from './review';
 import More from './moreWorks';
 import Footer from '../components/footer';
 
-const Index = () => {
-  const [selectedCategory, setSelectedCategory] = useState('wedding'); // Default category
-
-  // Handle category change
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-
-    // Smooth scroll to gallery section
-    //document.querySelector('.gallery-slide').scrollIntoView({ behavior: 'smooth' });
-  };
+const Gallery = () => {
+  const [category, setCategory] = useState('wedding'); // Default category
 
   return (
     <div>
       <Navbar />
       <div className="gallery-slide">
         <div>
-          <Menu onCategoryChange={handleCategoryChange} />
+          <Menu setCategory={setCategory} />
         </div>
         <div>
-          <GallerySlide selectedCategory={selectedCategory} />
+          <GallerySlide category={category} />
         </div>
       </div>
       <Testimonial />
@@ -66,4 +58,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Gallery;
