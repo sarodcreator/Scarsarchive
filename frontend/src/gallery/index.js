@@ -45,7 +45,7 @@ const Gallery = () => {
       <Navbar />
       <div className="gallery-slide">
         <div>
-          <Menu setCategory={setCategory} />
+          <Menu setCategory={setCategory} /> {/* Pass setCategory as a prop */}
         </div>
         <div>
           <GallerySlide category={category} />
