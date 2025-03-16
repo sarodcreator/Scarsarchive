@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import './index.css';
 import { Link } from 'react-router-dom'
 
@@ -22,4 +22,25 @@ const menu = () => {
 }
 
 export default menu;
+*/
+
+import React from 'react';
+import './index.css';
+
+const Menu = ({ onCategoryChange }) => {
+  return (
+    <div className="galleryMenu">
+      <h2><span>Projects</span></h2>
+      <p>Explore my portfolio featuring stunning photography, dynamic videography, and beautifully crafted albums.</p>
+      <div className="divider"></div>
+      <ul>
+        <li className="menu" onClick={() => onCategoryChange('wedding')}>Wedding</li>
+        <li className="menu" onClick={() => onCategoryChange('birthday')}>Birthdays</li>
+        <li className="menu" onClick={() => onCategoryChange('travel')}>Travels</li>
+      </ul>
+    </div>
+  );
+};
+
+export default Menu;
 
