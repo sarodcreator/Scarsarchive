@@ -45,7 +45,7 @@ const Index = () => {
     setSelectedCategory(category);
 
     // Smooth scroll to gallery section
-    document.querySelector('.gallery-slide').scrollIntoView({ behavior: 'smooth' });
+    //document.querySelector('.gallery-slide').scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
