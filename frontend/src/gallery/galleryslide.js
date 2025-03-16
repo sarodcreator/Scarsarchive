@@ -66,40 +66,41 @@
 
 import React, { useState } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import '../components/style.css';
 import { wedding, birthday, travel } from '../components/images';
+import '../components/style.css';
 import { Hirebtntransparent } from '../components/buttons';
 
-const categories = { wedding, birthday, travel };
+const GallerySlide = ({ category }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    
+    // Determine images based on the selected category
+    const slides = category === 'birthday' ? birthday 
+                  : category === 'travel' ? travel 
+                  : wedding; // Default to wedding
 
-const GallerySlide = ({ selectedCategory }) => {
-  const slides = categories[selectedCategory] || wedding; // Default to wedding if undefined
-  const [currentState, setCurrentState] = useState(0);
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev + 1) % slides.length);
+    };
 
-  const nextSlide = () => {
-    setCurrentState((prev) => (prev + 1) % slides.length);
-  };
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    };
 
-  const prevSlide = () => {
-    setCurrentState((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
+    return (
+        <div className="gallerySlideSec">
+            <div className="slides">
+                <button className="prev-btn" onClick={prevSlide}><FaAngleLeft /></button>
+                <div className="slide">
+                    <img src={slides[currentIndex].image} alt="Gallery Slide" />
+                </div>
+                <button className="next-btn" onClick={nextSlide}><FaAngleRight /></button>
+            </div>
 
-  return (
-    <div className="gallerySlideSec">
-      <div className="slides">
-        <button className="prev-btn" onClick={prevSlide}><FaAngleLeft /></button>
-        <div className="slide">
-          <img src={slides[currentState].image} alt={selectedCategory} />
+            <div className="bookbtn">
+                <Hirebtntransparent />
+            </div>
         </div>
-        <button className="next-btn" onClick={nextSlide}><FaAngleRight /></button>
-      </div>
-
-      <div className="bookbtn">
-        <Hirebtntransparent />
-      </div>
-    </div>
-  );
+    );
 };
 
 export default GallerySlide;
-
