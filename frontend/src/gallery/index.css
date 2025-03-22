@@ -43,8 +43,10 @@
     transition: color 0.3s ease, margin-left 0.3s ease;
 }
 .menu.active {
-  color: black;
+  color: var(--black) !important;
   margin-left: 16px;
+  font: var(--body-large) !important;
+  font-weight: bold !important;
 }
 .divider{
     border-bottom: 4px solid var(--body-color);
@@ -146,6 +148,16 @@
  }
  .more {
     width: 214px;
-    height: 500px;
+    height: 450px;
     background-color: grey;
+    align-items: center;
+    display: flex;
+    justify-content: center;
  }
+ .morebtn {
+    display: none;
+ }
+ .more:hover .morebtn {
+    display: block;
+ }
+ 

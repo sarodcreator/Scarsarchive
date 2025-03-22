@@ -13,6 +13,17 @@ export const Hirebtn = () => {
   )
 };
 
+export const HireBtnw = () => {
+  return (
+    <div>
+        <button className="btn trans-white">
+            Book Now
+            <FaArrowRight />
+        </button>
+    </div>
+  )
+};
+
 export const Downloadbtn = () => {
     return (
         <div>
