@@ -8,10 +8,12 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB Connection
-mongoose.connect("mongodb://localhost:27017/contactMessages", {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+.then(() => console.log("Connected to server successfully"))
+.catch(err => console.error("Error connecting to server", err));
 
 const MessageSchema = new mongoose.Schema({
   name: String,
@@ -27,8 +29,8 @@ const Message = mongoose.model("Message", MessageSchema);
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "youradmin@gmail.com",
-    pass: "yourpassword",
+      user: process.env.SWTP_USER,
+      pass: process.env.SWTP_PASS,
   },
 });
 
@@ -41,7 +43,7 @@ app.post("/send-message", async (req, res) => {
     await newMessage.save();
 
     const mailOptions = {
-      from: "youradmin@gmail.com",
+      from: process.env.ADMIN_EMAIL,
       to: email,
       subject: "We Received Your Message!",
       text: `Hello ${name},\n\nThank you for reaching out! We've received your message and will respond soon.\n\nBest Regards,\nYour Team`,
