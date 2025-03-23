@@ -54,38 +54,37 @@ const Contact = () => {
     };
 
     const handleSend = () => {
-        const { name, message } = formData;
-        if (!name || !message) {
+        const { name, email, message } = formData;
+        if (!name || !email || !message) {
             alert("Please fill in all required fields.");
             return;
         }
 
-        // Mailto link to open user's email client
-        const mailtoLink = `sarobaridoo@gmail.com?subject=New%20Message%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+        // Corrected mailto link
+        const mailtoLink = `mailto:sarobaridoo@gmail.com?subject=New%20Message%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
         window.location.href = mailtoLink;
     };
 
     return (
         <div className="contact-sec">
             <div className="contact-1">
-                <h2 className="title" style={{ fontWeight: "600px" }}>TALK TO US</h2>
+                <h2 className="title" style={{ fontWeight: "600" }}>TALK TO US</h2>
                 <p style={{ marginTop: "8px" }}>Sign up for our newsletter to receive album inspirations and ideas.</p>
                 <div className='cont'>
-                    <h4 style={{ fontWeight: '500px', marginTop: '40px' }}>CONNECT WITH OUR SOCIAL MEDIA</h4>
+                    <h4 style={{ fontWeight: "500", marginTop: "40px" }}>CONNECT WITH OUR SOCIAL MEDIA</h4>
                     <div className='social-icons'>
-                        <FaFacebook style={{ fontSize: '16px', color: '#727272' }} />
-                        <FaTelegram style={{ fontSize: '16px', color: '#727272' }} />
-                        <FaLinkedin style={{ fontSize: '16px', color: '#727272' }} />
+                        <FaFacebook style={{ fontSize: '24px', color: '#727272' }} />
+                        <FaTelegram style={{ fontSize: '24px', color: '#727272' }} />
+                        <FaLinkedin style={{ fontSize: '24px', color: '#727272' }} />
                     </div>
                 </div>
                 <div className='cont'>
-                    <h4 style={{ fontWeight: '500px', marginTop: '40px' }}>REACH US ON EMAIL</h4>
-                    <p style={{ marginTop: '6px' }}>biragbaradornu93@yahoo.com</p>
+                    <h4 style={{ fontWeight: "500", marginTop: "40px" }}>REACH US ON EMAIL</h4>
+                    <p style={{ marginTop: "6px" }}>biragbaradornu93@yahoo.com</p>
                 </div>
                 <div className='cont'>
-                    <h4 style={{ fontWeight: '500px', marginTop: '40px' }}>CALL US</h4>
-                    <p style={{ marginTop: '6px', fontSize: '14px' }}>+234 902 881 4293</p>
-                    {/*<p style={{ marginTop: '-2px', fontSize: '14px' }}>+234 906 791 4516</p>*/}
+                    <h4 style={{ fontWeight: "500", marginTop: "40px" }}>CALL US</h4>
+                    <p style={{ marginTop: "6px", fontSize: "14px" }}>+234 902 881 4293</p>
                 </div>
             </div>
 
