@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../images/icons/logo (1).png';
+import { Logos } from './images.js';
 import './style.css';
 
 const Navbar = () => {
+  const Logo = Logos[3];
   const [show, handleShow] = useState(false);
   useEffect(() => {
     const handleScroll = () => {

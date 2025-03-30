@@ -42,11 +42,14 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="testimonials-section">
-      <Slider {...settings}>  {testimonials.map((testimonial, index) => (
-          <TestimonialCard key={index} {...testimonial} />
-        ))}
-      </Slider>
+    <div className="review-sec">
+      
+      <div className="testimonials-section">
+        <Slider {...settings}>  {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={index} {...testimonial} />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };

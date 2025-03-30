@@ -71,7 +71,7 @@ export const Seemorebtn = () => {
 export const Sendbtn = () => {
     return (
         <div>
-            <button className="btn fill">
+            <button className="btn fill" type="submit">
                 SEND MESSAGE
             </button>
         </div>

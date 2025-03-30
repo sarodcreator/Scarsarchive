@@ -2,7 +2,6 @@ import React from 'react';
 import ServiceCard from './serviceCard';
 import './style.css';
 import Image1 from "../images/image 1.png";
-import Image2 from "../images/image.png";
 import Image3 from "../images/image-1.png";
 
 const service = [
@@ -11,12 +10,6 @@ const service = [
         desc: "Capturing authentic and timeless images that tell your story, from life’s big celebrations to everyday moments.",
         image: Image1,
         caption: 'photography',
-    },
-    {
-        title: "Videography",
-        desc: "Bringing your memories to life through cinematic films, designed to capture every emotion, sound, and detail.",
-        image: Image2,
-        caption: 'videography',
     },
     {
         title: "Album Creation",
@@ -48,14 +41,14 @@ const services = () => {
           professionally made album is such a valuable option.
         </p>
       </div>
-      {service.slice(0, 3).map((item, index) => (
+      {service.slice(0, 2).map((item, index) => (
         <ServiceCard
           key={index}
           title={item.title}
           desc={item.desc}
           image={item.image}
           caption={item.caption}
-          className={index === 2 ? "highlight" : ""}
+          id={index === 2 ? "highlight" : ""}
         />
       ))}
     </div>

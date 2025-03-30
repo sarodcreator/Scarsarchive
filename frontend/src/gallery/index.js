@@ -19,9 +19,15 @@ const index = () => {
           <GallerySlide />
         </div>
       </div>
-      <Testimonial />
-      <More />
-      <Footer />
+      <div className='tstimonialdivider'>
+        <Testimonial />
+      </div>
+      <div>
+        <More />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   )
 }
@@ -43,17 +49,25 @@ const Gallery = () => {
   return (
     <div>
       <Navbar />
-      <div className="gallery-slide">
-        <div>
-          <Menu setCategory={setCategory} /> {/* Pass setCategory as a prop */}
+      <div className="galleryBody">
+        <div className="gallery-slide">
+          <div>
+            <Menu setCategory={setCategory} /> {/* Pass setCategory as a prop */}
+          </div>
+          <div>
+            <GallerySlide category={category} />
+          </div>
+        </div>
+        <div className='testimonialdivider'>
+          <Testimonial />
         </div>
         <div>
-          <GallerySlide category={category} />
+          <More />
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
-      <Testimonial />
-      <More />
-      <Footer />
     </div>
   );
 };
