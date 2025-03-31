@@ -53,39 +53,45 @@
 
 // export default HeroSection
 
-import React from 'react';
-import Image1 from '../images/image-1.jpg';
+import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import './style.css';
 import { Hirebtn, Downloadbtntransparent } from './buttons.js';
+import { birthdayhighlight, birthdayZara, ProposalImages, TradAlex, TradZara, TradLeila, travelImages, whitewed } from "./images.js";
 
-const block1 = [
-    { id: 1, img: Image1, alt: "image 1" },
-    { id: 2, img: Image1, alt: "image 2" },
-    { id: 3, img: Image1, alt: "image 3" },
-    { id: 4, img: Image1, alt: "image 4" },
-]
-const block2 = [
-    { id: 5, img: Image1, alt: "image 5" },
-    { id: 6, img: Image1, alt: "image 6" },
-    { id: 7, img: Image1, alt: "image 7" },
-    { id: 8, img: Image1, alt: "image 8" },
-    { id: 9, img: Image1, alt: "image 9" },
-]
-const block3 = [
-    { id: 10, img: Image1, alt: "image 10" },
-    { id: 11, img: Image1, alt: "image 11" },
-    //{ id: 12, img: Image1, alt: "image 12" },
-]
+// Group all image categories together (excluding icons)
+const allImages = [
+    ...birthdayhighlight,
+    ...birthdayZara,
+    ...ProposalImages,
+    ...TradAlex,
+    ...TradZara,
+    ...TradLeila,
+    ...travelImages,
+    ...whitewed
+];
+
+const getRandomImages = (count) => {
+    let selected = [];
+    for (let i = 0; i < count; i++) {
+        selected.push(allImages[Math.floor(Math.random() * allImages.length)]);
+    }
+    return selected;
+};
 
 const HeroSection = () => {
-    
+    const [randomImages, setRandomImages] = useState([]);
+
+    useEffect(() => {
+        setRandomImages(getRandomImages(12)); // 12 images for 12 hex divs
+    }, []);
+
     return (
         <div className="hero">
             <Navbar />
             <div className="hero-sec">
                 <div className="hero-dt">
-                    <h1 className="hero-title">Scar's{/*<br />*/} Archive</h1>
+                    <h1 className="hero-title">Scar's Archive</h1>
                     <p className="hero-d">Digital Storyteller</p>
                     <div className="hero-btns">
                         <Hirebtn />
@@ -94,30 +100,30 @@ const HeroSection = () => {
                 </div>
                 <div className='hero-img-sec'>
                     <div className="hero-imgs">
-                        {block1.map((item) => (
-                            <div className="hex" key={item.id}>
-                                <img src={item.img} alt={item.desc} />
+                        {randomImages.slice(0, 4).map((img, index) => (
+                            <div className="hex" key={index}>
+                                <img src={img} alt={`Hex Image ${index + 1}`} />
                             </div>
                         ))}
                     </div>
                     <div className="hero-imgs block">
-                        {block2.map((item) => (
-                            <div className="hex" key={item.id}>
-                                <img src={item.img} alt={item.desc} />
+                        {randomImages.slice(4, 8).map((img, index) => (
+                            <div className="hex" key={index + 4}>
+                                <img src={img} alt={`Hex Image ${index + 5}`} />
                             </div>
                         ))}
                     </div>
                     <div className="hero-imgs block">
-                        {block3.map((item) => (
-                            <div className="hex" key={item.id}>
-                                <img src={item.img} alt={item.desc} />
+                        {randomImages.slice(8, 12).map((img, index) => (
+                            <div className="hex" key={index + 8}>
+                                <img src={img} alt={`Hex Image ${index + 9}`} />
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default HeroSection
+export default HeroSection;
