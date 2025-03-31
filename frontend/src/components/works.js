@@ -45,46 +45,67 @@
 
 // export default works
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Seemorebtn } from './buttons';
 import './style.css';
 import { birthdayhighlight, birthdayZara, ProposalImages, TradAlex, TradZara, TradLeila, travelImages, whitewed } from "./images.js";
 
-const getRandomImages = (image) => images[Math.floor(Math.random() * images.length)]
+// Function to get a random image from an array
+const getRandomImage = (images) => images[Math.floor(Math.random() * images.length)];
 
-const works = () => {
+const Works = () => {
+  const [randomImages, setRandomImages] = useState({
+    workbday1: getRandomImage(birthdayhighlight),
+    workbday2: getRandomImage(birthdayZara),
+    workproposal: getRandomImage(ProposalImages),
+    worktrad1: getRandomImage(TradAlex),
+    worktrad2: getRandomImage(TradZara),
+    worktrad3: getRandomImage(TradLeila),
+    worktravel: getRandomImage(travelImages),
+    workwhite: getRandomImage(whitewed),
+  });
+
+  // This effect will run once on page load to set the random images
+  useEffect(() => {
+    // No interval, just set the images once
+  }, []);
+
   return (
     <div className="worksSec">
-        <div className="worksHeading">
-            <h2>My <br/><span>Work</span></h2>
-            <p>Explore my portfolio featuring stunning photography, dynamic videography, and beautifully crafted albums. Each project showcases my dedication to capturing and preserving your most memorable moments.</p>
+      <div className="worksHeading">
+        <h2>My <br /><span>Work</span></h2>
+        <p>Explore my portfolio featuring stunning photography, dynamic videography, and beautifully crafted albums. Each project showcases my dedication to capturing and preserving your most memorable moments.</p>
+      </div>
+      <div className="worksImg">
+        <div className="workbday">
+          <img src={randomImages.workbday1} alt="Birthday Highlight" />
         </div>
-        <div className="worksImg">
-            <div className="workbday">
-            </div>
-              <div className="workbday">
-              </div>
-            <div className="workproposal">
-            </div>
-            <div className="worktrad1">
-            </div>
-            <div className="worktrad2">
-            
-            </div>
-            <div className="worktrad3">
-                
-            </div>
-            <div className="worktravel">
-                
-            </div>
-            <div className="workwhite">
-                
-            </div>
+        <div className="workbday">
+          <img src={randomImages.workbday2} alt="Birthday Zara" />
         </div>
-        
-        <Seemorebtn />
-    </div>
-  )
-}
+        <div className="workproposal">
+          <img src={randomImages.workproposal} alt="Proposal" />
+        </div>
+        <div className="worktrad1">
+          <img src={randomImages.worktrad1} alt="Traditional Wedding Alex" />
+        </div>
+        <div className="worktrad2">
+          <img src={randomImages.worktrad2} alt="Traditional Wedding Zara" />
+        </div>
+        <div className="worktrad3">
+          <img src={randomImages.worktrad3} alt="Traditional Wedding Leila & Nasir" />
+        </div>
+        <div className="worktravel">
+          <img src={randomImages.worktravel} alt="Travel" />
+        </div>
+        <div className="workwhite">
+          <img src={randomImages.workwhite} alt="White Wedding" />
+        </div>
+      </div>
 
-export default works
+      <Seemorebtn />
+    </div>
+  );
+};
+
+export default Works;
