@@ -64,19 +64,35 @@
 // export default GallerySlide;
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
-import { wedding, birthday, travel } from '../components/images';
+import { 
+    birthdayhighlight, birthdayZara, ProposalImages, TradAlex, TradZara, TradLeila, 
+    travelImages, whitewed 
+} from '../components/images';
 import '../components/style.css';
 import { Hirebtntransparent } from '../components/buttons';
 
+const categoryMapping = {
+    'birthday/highlight': birthdayhighlight,
+    'birthday/zara': birthdayZara,
+    'proposal': ProposalImages,
+    'traditional/alex': TradAlex,
+    'traditional/leila': TradLeila,
+    'traditional/zara': TradZara,
+    'white': whitewed,
+    'travel': travelImages,
+};
+
 const GallerySlide = ({ category }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    
-    // Determine images based on the selected category
-    const slides = category === 'birthday' ? birthday 
-                  : category === 'travel' ? travel 
-                  : wedding; // Default to wedding
+    const [slides, setSlides] = useState([]);
+
+    // Update slides when category changes
+    useEffect(() => {
+        setSlides(categoryMapping[category] || []);
+        setCurrentIndex(0); // Reset to first image when category changes
+    }, [category]);
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % slides.length);
@@ -91,7 +107,11 @@ const GallerySlide = ({ category }) => {
             <div className="slides">
                 <button className="prev-btn" onClick={prevSlide}><FaAngleLeft /></button>
                 <div className="slide">
-                    <img src={slides[currentIndex].image} alt="Gallery Slide" />
+                    {slides.length > 0 ? (
+                        <img src={slides[currentIndex]} alt="Gallery Slide" />
+                    ) : (
+                        <p>No images available</p>
+                    )}
                 </div>
                 <button className="next-btn" onClick={nextSlide}><FaAngleRight /></button>
             </div>
